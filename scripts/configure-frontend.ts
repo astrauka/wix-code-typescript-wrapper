@@ -1,8 +1,10 @@
-import * as del from 'del';
 import * as fs from 'fs';
-import { difference } from 'lodash';
 import * as path from 'path';
+
+import * as del from 'del';
+import { difference } from 'lodash';
 import * as copy from 'recursive-copy/lib/copy';
+
 import { rsync } from './rsync';
 
 const CURRENT_DIR = path.resolve(__dirname, './');
@@ -54,15 +56,13 @@ async function configurePages(distDir: string, srcDir: string, wixSrcDir: string
   if (typescriptPages.length !== pagesToCopy.length) {
     const missingPages = difference(
       typescriptPages,
-      pagesToCopy.map(([page]) => page)
+      pagesToCopy.map(([page]) => page),
     );
     throw new Error(`Typescript pages did not match source pages: ${missingPages}`);
   }
 
   await Promise.all(
-    pagesToCopy.map(([page, directory]) =>
-      copy(`${distDir}/${page}.js`, `${srcDir}/${directory}/${page}.js`)
-    )
+    pagesToCopy.map(([page, directory]) => copy(`${distDir}/${page}.js`, `${srcDir}/${directory}/${page}.js`)),
   );
 }
 

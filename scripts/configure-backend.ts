@@ -1,7 +1,9 @@
-import * as del from 'del';
 import * as fs from 'fs';
 import * as path from 'path';
+
+import * as del from 'del';
 import * as copy from 'recursive-copy/lib/copy';
+
 import { rsync } from './rsync';
 
 const CURRENT_DIR = path.resolve(__dirname, './');
