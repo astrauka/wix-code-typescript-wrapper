@@ -10,7 +10,7 @@ const CURRENT_DIR = path.resolve(__dirname, './');
 const DIST_DIR = path.resolve(CURRENT_DIR, '../dist');
 const SRC_DIR = path.resolve(DIST_DIR, './src');
 
-async function configureBackend() {
+export async function configureBackend() {
   const BACKEND_DIST_DIR = path.resolve(DIST_DIR, './backend');
   const BACKEND_SRC_DIR = path.resolve(SRC_DIR, './backend');
 
@@ -21,5 +21,3 @@ async function configureBackend() {
   fs.renameSync(`${BACKEND_SRC_DIR}/data-hooks.js`, `${BACKEND_SRC_DIR}/data.js`);
   await rsync(`${BACKEND_SRC_DIR}/`, path.resolve(CURRENT_DIR, '../src/backend'));
 }
-
-configureBackend().then(() => console.log('Done'));

@@ -4,6 +4,7 @@
   "description": "Allows to write typescript developing code with Wix Local Editor. Compiles and uploads javascript to Wix.",
   "main": "index.js",
   "scripts": {
+    "build": "tsc -p scripts/tsconfig.json",
     "lint": "eslint --fix .",
     "test": "npm run lint"
   },
@@ -25,6 +26,7 @@
   },
   "homepage": "https://github.com/astrauka/wix-code-typescript-wrapper#readme",
   "devDependencies": {
+    "@types/yargs": "^16.0.1",
     "@typescript-eslint/eslint-plugin": "^4.22.1",
     "@typescript-eslint/parser": "^4.22.1",
     "eslint": "^7.26.0",
@@ -34,5 +36,10 @@
     "prettier": "^2.3.0",
     "prettier-eslint": "^12.0.0",
     "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "del": "^6.0.0",
+    "recursive-copy": "^2.0.11",
+    "yargs": "^17.0.1"
   }
 }

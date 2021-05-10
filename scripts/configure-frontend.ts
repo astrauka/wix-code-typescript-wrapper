@@ -66,4 +66,6 @@ async function configurePages(distDir: string, srcDir: string, wixSrcDir: string
   );
 }
 
-Promise.all([configureFrontendPublic(), configureFrontendPages()]).then(() => console.log('Done'));
+export async function configureFrontend() {
+  await Promise.all([configureFrontendPublic(), configureFrontendPages()]);
+}
