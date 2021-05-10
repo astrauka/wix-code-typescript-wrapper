@@ -1,0 +1,38 @@
+{
+  "name": "wix-code-typescript-wrapper",
+  "version": "1.0.0",
+  "description": "Allows to write typescript developing code with Wix Local Editor. Compiles and uploads javascript to Wix.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --fix .",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/astrauka/wix-code-typescript-wrapper"
+  },
+  "keywords": [
+    "Velo",
+    "Wix",
+    "code",
+    "editor",
+    "typescript"
+  ],
+  "author": "Karolis Astrauka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/astrauka/wix-code-typescript-wrapper/issues"
+  },
+  "homepage": "https://github.com/astrauka/wix-code-typescript-wrapper#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.22.1",
+    "@typescript-eslint/parser": "^4.22.1",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.0",
+    "prettier-eslint": "^12.0.0",
+    "typescript": "^4.2.4"
+  }
+}

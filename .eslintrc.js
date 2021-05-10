@@ -1,0 +1,61 @@
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module',
+  },
+  plugins: ['@typescript-eslint'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+    'plugin:prettier/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
+  ],
+  root: true,
+  env: {
+    node: true,
+    mocha: true,
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.json', '.ts', '.d.ts'],
+      },
+    },
+  },
+  rules: {
+    'import/export': 0,
+    'import/namespace': 0,
+    'import/no-unresolved': 0,
+    'import/order': [
+      2,
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
+        'newlines-between': 'always',
+      },
+    ],
+    'no-control-regex': 0,
+    'no-async-promise-executor': 0,
+    'no-prototype-builtins': 0,
+    'no-useless-escape': 0,
+    '@typescript-eslint/array-type': 2,
+    '@typescript-eslint/ban-ts-comment': 0,
+    '@typescript-eslint/ban-types': 0,
+    '@typescript-eslint/explicit-function-return-type': 0,
+    '@typescript-eslint/explicit-module-boundary-types': 0,
+    '@typescript-eslint/no-duplicate-imports': 2,
+    '@typescript-eslint/no-empty-function': 0,
+    '@typescript-eslint/no-explicit-any': 2,
+    '@typescript-eslint/no-inferrable-types': 0,
+    '@typescript-eslint/no-namespace': 0,
+    '@typescript-eslint/no-require-imports': 2,
+    '@typescript-eslint/no-shadow': 0,
+    '@typescript-eslint/no-unused-vars': 0,
+    '@typescript-eslint/no-var-requires': 0,
+    '@typescript-eslint/prefer-ts-expect-error': 2,
+    '@typescript-eslint/return-await': 0,
+  },
+};
