@@ -31,7 +31,7 @@ async function configureFrontendPages() {
   const WIX_PAGES_SRC_DIR = path.resolve(CURRENT_DIR, '../src/pages');
   await del(PAGES_SRC_DIR);
   await configurePages(PAGES_DIST_DIR, PAGES_SRC_DIR, WIX_PAGES_SRC_DIR);
-  await rsync(`${PAGES_SRC_DIR}/`, WIX_PAGES_SRC_DIR, { override: false });
+  await rsync(`${PAGES_SRC_DIR}/`, WIX_PAGES_SRC_DIR, { overwrite: false });
 }
 
 async function configurePages(distDir: string, srcDir: string, wixSrcDir: string) {

@@ -1,16 +1,21 @@
 #!/usr/bin/env node
-import yargs, { Arguments } from 'yargs';
+import yargs, { Arguments, terminalWidth } from 'yargs';
+import { hideBin } from 'yargs/helpers';
 
 import { configureBackend } from './configure-backend';
 import { configureFrontend } from './configure-frontend';
+import { initializeProject } from './initialize-project';
 
-yargs
-  .usage('wix-code-typescript-wrapper [action]')
+const NAME = 'wix-code-typescript-wrapper';
+
+yargs(hideBin(process.argv))
+  .scriptName(NAME)
+  .usage('$0 [action]')
   .command(
     'init',
     'initialize project structure',
-    (_yards) => yargs,
-    (_argv: Arguments) => configureBackend(),
+    (yargs) => yargs,
+    (_argv: Arguments) => initializeProject(),
   )
   .command(
     'build-backend',
@@ -23,4 +28,6 @@ yargs
     'build and configure forntend code to src/pages, src/public, src/lightboxes directories',
     (_yards) => yargs,
     (_argv: Arguments) => configureFrontend(),
-  ).argv;
+  )
+  .wrap(terminalWidth())
+  .demandCommand(1, 1).argv;

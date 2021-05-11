@@ -1,13 +1,17 @@
-# compiled
-/dist
+# Wix specific
+*.wix
+.corvid
 
-# dependencies
-node_modules
+# generated
+/src
+/dist
+/node_modules
 
 # logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/.corvid/session.log
 
 # misc
 .idea

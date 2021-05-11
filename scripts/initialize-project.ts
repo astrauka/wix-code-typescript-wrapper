@@ -1,11 +1,10 @@
-import * as path from 'path';
-
 import { rsync } from './rsync';
-
-const CURRENT_DIR = path.resolve(__dirname, './');
-const INITIAL_STRUCTURE_DIR = path.resolve(CURRENT_DIR, '../initial-structure');
-const DESTINATION_DIR = path.resolve(CURRENT_DIR, './destination');
+import { getDirectoryFromRoot } from './paths';
 
 export async function initializeProject() {
-  await rsync(`${INITIAL_STRUCTURE_DIR}/`, path.resolve(CURRENT_DIR, '../src/backend'));
+  const callerPath = process.cwd();
+  const initialStructurePath = getDirectoryFromRoot('./initial-structure');
+  console.info(`Copying ${initialStructurePath} to ${callerPath}`);
+  await rsync(`${initialStructurePath}/`, `${callerPath}/`, { overwrite: false });
+  console.info('Done');
 }

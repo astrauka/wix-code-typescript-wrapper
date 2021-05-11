@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "../../dist/",
+    "types" : ["node", "corvid-types/types/backend"],
+    "declaration": true,
+    "target": "ES2019",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "preserveConstEnums": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["**/*.ts"]
+}
