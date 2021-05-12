@@ -1,5 +1,5 @@
-import { rsync } from './rsync';
-import { getDirectoryFromCaller, getDirectoryFromLibrary } from './paths';
+import { rsync } from './utils/rsync';
+import { getDirectoryFromCaller, getDirectoryFromLibrary } from './utils/paths';
 
 export async function initializeProject() {
   const callerPath = getDirectoryFromCaller();

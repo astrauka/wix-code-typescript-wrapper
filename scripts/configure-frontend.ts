@@ -1,37 +1,25 @@
 import * as fs from 'fs';
-import * as path from 'path';
 
 import * as del from 'del';
 import { difference } from 'lodash';
 import * as copy from 'recursive-copy/lib/copy';
 
-import { rsync } from './rsync';
-
-const CURRENT_DIR = path.resolve(__dirname, './');
-const DIST_DIR = path.resolve(CURRENT_DIR, '../dist');
-const SRC_DIR = path.resolve(DIST_DIR, './src');
+import { rsync } from './utils/rsync';
+import { syncDirectory } from './utils/sync-directory';
+import { getDirectoryFromCaller } from './utils/paths';
 
 async function configureFrontendPublic() {
-  const PUBLIC_DIST_DIR = path.resolve(DIST_DIR, './frontend/public');
-  const PUBLIC_SRC_DIR = path.resolve(SRC_DIR, './public');
-  const UNIVERSAL_DIST_DIR = path.resolve(DIST_DIR, './backend/universal');
-
-  await del(PUBLIC_SRC_DIR);
-  await copy(PUBLIC_DIST_DIR, PUBLIC_SRC_DIR, { filter: ['**/*.js', '!**/*.spec.js'] });
-  await copy(UNIVERSAL_DIST_DIR, `${PUBLIC_SRC_DIR}/universal`, {
-    filter: ['**/*.js', '!**/*.spec.js'],
-  });
-  await copy(`${CURRENT_DIR}/tsconfig.public.json`, `${PUBLIC_SRC_DIR}/tsconfig.json`);
-  await rsync(`${PUBLIC_SRC_DIR}/`, path.resolve(CURRENT_DIR, '../src/public'));
+  await syncDirectory('frontend/public', 'src/public');
+  await syncDirectory('backend/universal', 'src/public/universal');
 }
 
 async function configureFrontendPages() {
-  const PAGES_DIST_DIR = path.resolve(DIST_DIR, './frontend/pages');
-  const PAGES_SRC_DIR = path.resolve(SRC_DIR, './pages');
-  const WIX_PAGES_SRC_DIR = path.resolve(CURRENT_DIR, '../src/pages');
-  await del(PAGES_SRC_DIR);
-  await configurePages(PAGES_DIST_DIR, PAGES_SRC_DIR, WIX_PAGES_SRC_DIR);
-  await rsync(`${PAGES_SRC_DIR}/`, WIX_PAGES_SRC_DIR, { overwrite: false });
+  const distDir = getDirectoryFromCaller('./dist/frontend/pages');
+  const srcDir = getDirectoryFromCaller('./dist/src/pages');
+  const wixSrcDir = getDirectoryFromCaller('./src/pages');
+  await del(srcDir);
+  await configurePages(distDir, srcDir, wixSrcDir);
+  await rsync(`${srcDir}/`, wixSrcDir, { overwrite: false });
 }
 
 async function configurePages(distDir: string, srcDir: string, wixSrcDir: string) {
