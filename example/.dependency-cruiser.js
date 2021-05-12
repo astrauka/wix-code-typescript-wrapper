@@ -3,11 +3,11 @@ module.exports = {
   forbidden: [
     /* custom rules */
     {
-      name: "forbid-common-include",
-      comment: "don't allow dependencies from root /common directory",
+      name: "forbid-universal-include",
+      comment: "don't allow frontend dependencies from backend directory",
       severity: "error",
-      from: { "path": "^typescript/(backend|frontend)" },
-      to: { "path": "^typescript/common" }
+      from: { "path": "^typescript/frontend" },
+      to: { "path": "^typescript/backend" }
     },
     /* rules from the 'recommended' preset: */
     {
