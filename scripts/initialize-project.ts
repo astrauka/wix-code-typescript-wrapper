@@ -1,9 +1,9 @@
 import { rsync } from './rsync';
-import { getDirectoryFromRoot } from './paths';
+import { getDirectoryFromCaller, getDirectoryFromLibrary } from './paths';
 
 export async function initializeProject() {
-  const callerPath = process.cwd();
-  const initialStructurePath = getDirectoryFromRoot('./initial-structure');
+  const callerPath = getDirectoryFromCaller();
+  const initialStructurePath = getDirectoryFromLibrary('./initial-structure');
   console.info(`Copying ${initialStructurePath} to ${callerPath}`);
   await rsync(`${initialStructurePath}/`, `${callerPath}/`, { overwrite: false });
   console.info('Done');

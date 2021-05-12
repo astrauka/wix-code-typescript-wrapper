@@ -1,9 +1,9 @@
 import * as path from 'path';
 
-export function getRootDirectory(): string {
-  return path.resolve(__dirname, '../');
+export function getDirectoryFromLibrary(relativePath: string = ''): string {
+  return path.resolve(path.resolve(__dirname, '../'), relativePath);
 }
 
-export function getDirectoryFromRoot(relativePath: string): string {
-  return path.resolve(getRootDirectory(), relativePath);
+export function getDirectoryFromCaller(relativePath: string = ''): string {
+  return path.resolve(process.cwd(), relativePath);
 }

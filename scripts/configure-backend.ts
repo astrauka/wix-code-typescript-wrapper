@@ -1,23 +1,20 @@
 import * as fs from 'fs';
-import * as path from 'path';
 
 import * as del from 'del';
 import * as copy from 'recursive-copy/lib/copy';
 
 import { rsync } from './rsync';
-
-const CURRENT_DIR = path.resolve(__dirname, './');
-const DIST_DIR = path.resolve(CURRENT_DIR, '../dist');
-const SRC_DIR = path.resolve(DIST_DIR, './src');
+import { getDirectoryFromCaller, getDirectoryFromLibrary } from './paths';
 
 export async function configureBackend() {
-  const BACKEND_DIST_DIR = path.resolve(DIST_DIR, './backend');
-  const BACKEND_SRC_DIR = path.resolve(SRC_DIR, './backend');
+  const backendSrcDir = getDirectoryFromCaller('./dist/src/backend');
 
-  await del(BACKEND_SRC_DIR);
-  await copy(BACKEND_DIST_DIR, BACKEND_SRC_DIR, { filter: ['**/*.js', '!**/*.spec.js'] });
-  await copy(`${CURRENT_DIR}/tsconfig.backend.json`, `${BACKEND_SRC_DIR}/tsconfig.json`);
-  fs.renameSync(`${BACKEND_SRC_DIR}/backend-api.js`, `${BACKEND_SRC_DIR}/backend-api.jsw`);
-  fs.renameSync(`${BACKEND_SRC_DIR}/data-hooks.js`, `${BACKEND_SRC_DIR}/data.js`);
-  await rsync(`${BACKEND_SRC_DIR}/`, path.resolve(CURRENT_DIR, '../src/backend'));
+  await del(backendSrcDir);
+  await copy(getDirectoryFromCaller('./dist/backend'), backendSrcDir, { filter: ['**/*.js', '!**/*.spec.js'] });
+  await copy(
+    getDirectoryFromLibrary('./templates/tsconfig.backend.json'),
+    getDirectoryFromCaller(`${backendSrcDir}/tsconfig.json`),
+  );
+  fs.renameSync(`${backendSrcDir}/backend-api.js`, `${backendSrcDir}/backend-api.jsw`);
+  await rsync(`${backendSrcDir}/`, getDirectoryFromCaller('./src/backend'));
 }
