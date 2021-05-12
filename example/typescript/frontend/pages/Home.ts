@@ -6,7 +6,7 @@ import { getDefaultId } from 'public/universal/todo-item';
 import { getDefaultTitle } from 'public/common-frontend-code';
 
 $w.onReady(async () => {
-  console.info('Todos', pick(await getTodoItems(), 'id'));
+  console.info('Todos', pick((await getTodoItems()).items[0], 'id'));
   console.info('Default id', getDefaultId());
   console.info('Default title', getDefaultTitle());
 });

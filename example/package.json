@@ -13,7 +13,10 @@
     "build:watch": "run-p build:watch:*",
     "wix:pull": "npx corvid pull --override",
     "wix:editor": "npx corvid open-editor",
-    "wix": "npm run wix:pull && npm run build && npm run wix:editor"
+    "wix": "npm run wix:pull && npm run build && npm run wix:editor",
+    "do-not-copy:build:backend": "rm -rf dist/backend && npx tsc --build typescript/backend/tsconfig.json && npx ts-node ../scripts/index.ts build-backend",
+    "do-not-copy:build:frontend": "rm -rf dist/frontend && npx tsc --build typescript/frontend/tsconfig.json && npx ts-node ../scripts/index.ts build-frontend",
+    "do-not-copy:build": "run-p do-not-copy:build:*"
   },
   "watch": {
     "build:backend": {
