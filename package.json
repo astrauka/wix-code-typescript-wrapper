@@ -1,16 +1,20 @@
 {
   "name": "@astrauka/wix-code-typescript-wrapper",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Allows to write typescript developing code with Wix Local Editor. Compiles and uploads javascript to Wix.",
   "bin": {
     "wix-code-ts": "dist/scripts/index.js"
   },
+  "files": ["dist"],
   "main": "dist/scripts/index.js",
   "scripts": {
     "build": "tsc -p scripts/tsconfig.json",
     "build:watch": "tsc -p scripts/tsconfig.json -w",
     "lint": "eslint --fix .",
     "test": "npm run lint"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
