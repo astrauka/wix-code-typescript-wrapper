@@ -1,0 +1,20 @@
+{
+  "extends": "corvid-types/configs/tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src"
+  },
+  "references": [
+    {
+      "path": "src/backend"
+    },
+    {
+      "path": "src/public"
+    },
+    {
+      "path": "src/pages/Home.trxk8"
+    },
+    {
+      "path": "src/pages/site"
+    }
+  ]
+}
