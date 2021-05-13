@@ -1,5 +1,5 @@
-import * as copy from 'recursive-copy/lib/copy';
-import * as del from 'del';
+import copy from 'recursive-copy';
+import del from 'del';
 
 import { getDirectoryFromCaller } from './paths';
 import { rsync } from './rsync';

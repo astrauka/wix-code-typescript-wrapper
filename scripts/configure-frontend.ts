@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 
-import * as del from 'del';
+import del from 'del';
 import { difference } from 'lodash';
-import * as copy from 'recursive-copy/lib/copy';
+import copy from 'recursive-copy';
 
 import { rsync } from './utils/rsync';
 import { syncDirectory } from './utils/sync-directory';

@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "build": "rm -rf dist && npm run build:backend && npm run build:frontend",
-    "build:backend": "rm -rf dist/backend && tsc --build typescript/backend/tsconfig.json && wix-code-typescript-wrapper build-backend",
-    "build:frontend": "rm -rf dist/frontend && tsc --build typescript/frontend/tsconfig.json && wix-code-typescript-wrapper build-frontend",
+    "build:backend": "rm -rf dist/backend && tsc --build typescript/backend/tsconfig.json && npx wix-code-ts build-backend",
+    "build:frontend": "rm -rf dist/frontend && tsc --build typescript/frontend/tsconfig.json && npx wix-code-ts build-frontend",
     "build:check-dependencies": "depcruise --config .dependency-cruiser.js typescript",
     "build:watch:backend": "npm-watch build:backend",
     "build:watch:frontend": "npm-watch build:frontend",
@@ -13,10 +13,7 @@
     "build:watch": "run-p build:watch:*",
     "wix:pull": "npx corvid pull --override",
     "wix:editor": "npx corvid open-editor",
-    "wix": "npm run wix:pull && npm run build && npm run wix:editor",
-    "do-not-copy:build:backend": "rm -rf dist/backend && npx tsc --build typescript/backend/tsconfig.json && npx ts-node ../scripts/index.ts build-backend",
-    "do-not-copy:build:frontend": "rm -rf dist/frontend && npx tsc --build typescript/frontend/tsconfig.json && npx ts-node ../scripts/index.ts build-frontend",
-    "do-not-copy:build": "run-p do-not-copy:build:*"
+    "wix": "npm run wix:pull && npm run build && npm run wix:editor"
   },
   "watch": {
     "build:backend": {
@@ -53,6 +50,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
+    "@astrauka/wix-code-typescript-wrapper": "link:..",
     "lodash": "4.17.21"
   }
 }
