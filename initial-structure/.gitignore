@@ -2,6 +2,14 @@
 *.wix
 .corvid
 
+# replace with /src to not store sources in git
+/src/assets
+/src/database
+/src/lightboxes/**/pageElements.d.ts
+/src/lightboxes/**/*.json
+/src/pages/**/pageElements.d.ts
+/src/pages/**/*.json
+
 # generated
 /src
 /dist

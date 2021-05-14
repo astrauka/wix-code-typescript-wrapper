@@ -4,11 +4,11 @@ import del from 'del';
 import { difference } from 'lodash';
 import copy from 'recursive-copy';
 
-import { rsync } from './utils/rsync';
-import { syncDirectory } from './utils/sync-directory';
-import { getDirectoryFromCaller } from './utils/paths';
+import { rsync, syncDirectory } from './utils/sync';
+import { copyFromTemplate, getDirectoryFromCaller } from './utils/files';
 
 async function configureFrontendPublic() {
+  await copyFromTemplate('tsconfig.public.json', 'frontend/public/tsconfig.json');
   await syncDirectory('frontend/public', 'src/public');
   await syncDirectory('backend/universal', 'src/public/universal');
 }

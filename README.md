@@ -49,8 +49,11 @@ typescript
 * frontend/public -> src/public
 * backend/universal -> src/public/universal
 
-Files in `src` are not deleted. If there's no typescript file defined, the src file will not be deleted.
-When there is typescript file defined, it's compiled to javascript version will override the src file.
+Files in `src/backend` and `src/public` are deleted to not leave trash on renaming a file.
+You have to port all files from bakcend and public to typescript at once.
+
+Files in `src/pages` are not deleted. If there's no typescript file defined, the src file will not be deleted.
+When there is typescript file defined, it's compiled version will override the src file.
 
 ## Development flow
 

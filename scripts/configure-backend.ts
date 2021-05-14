@@ -1,10 +1,8 @@
-import * as fs from 'fs';
-
-import { syncDirectory } from './utils/sync-directory';
-import { getDirectoryFromCaller } from './utils/paths';
+import { syncDirectory } from './utils/sync';
+import { copyFromTemplate, renameInDist } from './utils/files';
 
 export async function configureBackend() {
-  const backendDst = getDirectoryFromCaller('./dist/backend');
-  fs.renameSync(`${backendDst}/backend-api.js`, `${backendDst}/backend-api.jsw`);
+  await renameInDist('backend/backend-api.js', 'backend/backend-api.jsw');
+  await copyFromTemplate('tsconfig.backend.json', 'backend/tsconfig.json');
   await syncDirectory('backend', 'src/backend');
 }

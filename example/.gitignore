@@ -1,9 +1,14 @@
 # Wix specific
 *.wix
 .corvid
+/src/assets
+/src/database
+/src/lightboxes/**/pageElements.d.ts
+/src/lightboxes/**/*.json
+/src/pages/**/pageElements.d.ts
+/src/pages/**/*.json
 
 # generated
-/src
 /dist
 /node_modules
 
