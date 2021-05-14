@@ -5,7 +5,7 @@
     "paths": {
       "public/universal/*": ["../backend/universal/*"],
       "public/*": ["./public/*"],
-      "backend/backend-api": ["../backend/backend-api"]
+      "backend/backend-api": ["../../dist/backend/backend-api"]
     },
     "target": "ES2019",
     "module": "ESNext",
