@@ -6,7 +6,9 @@
     "wix-code-ts": "dist/scripts/index.js"
   },
   "files": [
-    "dist"
+    "initial-structure",
+    "dist",
+    "templates"
   ],
   "main": "dist/scripts/index.js",
   "scripts": {
