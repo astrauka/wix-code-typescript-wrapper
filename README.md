@@ -18,24 +18,10 @@ Changes in Web Editor will be overridden on build for files that have typescript
 * initialize your Wix project with [Local Editor](https://support.wix.com/en/velo-by-wix/local-development-alpha)
 * add the `@astrauka/wix-code-typescript-wrapper` module to development dependencies
 * initialize typescript project structure `npx wix-code-ts init`
-* update `package.json` with build configuration:
-```json
-{
-  "scripts": {
-    "build": "rm -rf dist && npm run build:backend && npm run build:frontend",
-    "build:backend": "rm -rf dist/backend && tsc --build typescript/backend/tsconfig.json && npx wix-code-ts build-backend",
-    "build:frontend": "rm -rf dist/frontend && tsc --build typescript/frontend/tsconfig.json && npx wix-code-ts build-frontend",
-    "build:check-dependencies": "depcruise --config .dependency-cruiser.js typescript",
-    "build:watch:backend": "npm-watch build:backend",
-    "build:watch:frontend": "npm-watch build:frontend",
-    "build:watch:check-dependencies": "npm-watch build:check-dependencies",
-    "build:watch": "run-p build:watch:*",
-    "wix:pull": "npx corvid pull --override",
-    "wix:editor": "npx corvid open-editor",
-    "wix": "npm run wix:pull && npm run build && npm run wix:editor"
-  }
-}
-```
+* update `package.json` with build configuration, copy configuration from [example project](./example/package.json):
+  * scripts
+  * watch
+  * devDependencies
 * rewrite javascript files to typescript
 
 ## Directory structure
