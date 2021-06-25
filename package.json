@@ -1,6 +1,6 @@
 {
   "name": "@astrauka/wix-code-typescript-wrapper",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "Allows to write typescript developing code with Wix Local Editor. Compiles and uploads javascript to Wix.",
   "bin": {
     "wix-code-ts": "dist/scripts/index.js"
