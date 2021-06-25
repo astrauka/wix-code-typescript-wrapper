@@ -26,3 +26,9 @@ export async function renameInDist(from: string, to: string) {
 export function fileExists(url: string): boolean {
   return fs.existsSync(url);
 }
+
+export async function onDistDirectoryExists(path: string, onExistsFn: () => Promise<void>): Promise<void> {
+  if (fileExists(getDirectoryFromCaller(`./dist/${path}`))) {
+    await onExistsFn();
+  }
+}
