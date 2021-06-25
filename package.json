@@ -15,7 +15,8 @@
     "build": "tsc -p scripts/tsconfig.json",
     "build:watch": "tsc -p scripts/tsconfig.json -w",
     "lint": "eslint --fix .",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "publish:minor": "npm version minor && npm publish"
   },
   "publishConfig": {
     "access": "public"
