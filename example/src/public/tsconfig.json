@@ -1,7 +1,7 @@
 {
   "extends": "corvid-types/configs/tsconfig.public.json",
   "compilerOptions": {
-    "baseUrl": "../scripts",
+    "baseUrl": ".",
     "paths": {
       "public/*": [
         "./*"

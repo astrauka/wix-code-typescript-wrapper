@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "outDir": "../../dist/backend/",
+    "outDir": "../../dist",
+    "rootDir": "..",
     "types" : ["node", "corvid-types/types/backend"],
     "declaration": true,
     "target": "ES2019",

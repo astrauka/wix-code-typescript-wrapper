@@ -5,15 +5,22 @@ import { difference } from 'lodash';
 import copy from 'recursive-copy';
 
 import { rsync, syncDirectory } from './utils/sync';
-import { copyFromTemplate, getDirectoryFromCaller } from './utils/files';
+import { copyFromTemplate, fileExists, getDirectoryFromCaller } from './utils/files';
 
 async function configureFrontendPublic() {
+  if (!fileExists(getDirectoryFromCaller('./dist/frontend/public'))) {
+    return;
+  }
+  console.info('EX', getDirectoryFromCaller('./dist/frontend/public'));
   await copyFromTemplate('tsconfig.public.json', 'frontend/public/tsconfig.json');
   await syncDirectory('frontend/public', 'src/public');
   await syncDirectory('backend/universal', 'src/public/universal');
 }
 
 async function configureFrontendPages() {
+  if (!fileExists(getDirectoryFromCaller('./dist/frontend/pages'))) {
+    return;
+  }
   const distDir = getDirectoryFromCaller('./dist/frontend/pages');
   const srcDir = getDirectoryFromCaller('./dist/src/pages');
   const wixSrcDir = getDirectoryFromCaller('./src/pages');
