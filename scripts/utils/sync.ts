@@ -1,7 +1,7 @@
 import { exec } from 'child_process';
 
 import copy from 'recursive-copy';
-import del from 'del';
+import { deleteSync } from 'del';
 
 import { getDirectoryFromCaller } from './files';
 
@@ -23,7 +23,7 @@ export async function rsync(source: string, destination: string, { overwrite = t
 
 export async function syncDirectory(from: string, to: string) {
   const compiledSource = getDirectoryFromCaller(`./dist/${to}`);
-  await del(compiledSource);
+  deleteSync(compiledSource);
   await copy(getDirectoryFromCaller(`./dist/${from}`), compiledSource, {
     filter: ['**/*.js', '**/*.jsw', '**/*.json', '!**/*.spec.js'],
   });

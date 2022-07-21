@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-import del from 'del';
+import { deleteSync } from 'del';
 import { difference } from 'lodash';
 import copy from 'recursive-copy';
 
@@ -22,7 +22,7 @@ async function configureFrontendPages() {
     const distDir = getDirectoryFromCaller('./dist/frontend/pages');
     const srcDir = getDirectoryFromCaller('./dist/src/pages');
     const wixSrcDir = getDirectoryFromCaller('./src/pages');
-    await del(srcDir);
+    deleteSync(srcDir);
     await configurePages(distDir, srcDir, wixSrcDir);
     await rsync(`${srcDir}/`, wixSrcDir, { overwrite: false });
   });

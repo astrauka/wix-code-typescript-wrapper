@@ -38,21 +38,22 @@
   },
   "homepage": "https://github.com/astrauka/wix-code-typescript-wrapper#readme",
   "devDependencies": {
-    "@types/lodash": "^4.14.176",
-    "@types/yargs": "^17.0.4",
-    "@typescript-eslint/eslint-plugin": "^5.1.0",
-    "@typescript-eslint/parser": "^5.1.0",
-    "eslint": "^8.1.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.4.1",
-    "prettier-eslint": "^13.0.0",
-    "typescript": "^4.4.4"
+    "@types/lodash": "^4.14.182",
+    "@types/node": "^18.0.6",
+    "@types/yargs": "^17.0.10",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "prettier-eslint": "^15.0.1",
+    "typescript": "^4.7.4"
   },
   "dependencies": {
-    "del": "^6.0.0",
-    "recursive-copy": "^2.0.13",
-    "yargs": "^17.2.1"
+    "del": "^7.0.0",
+    "recursive-copy": "^2.0.14",
+    "yargs": "^17.5.1"
   }
 }
