@@ -86,3 +86,12 @@ You need to define the types of page elements: `$w('#button' as 'Button)` to get
 
 Check if there's no [open issue](https://github.com/astrauka/wix-code-typescript-wrapper/issues) discussing the same problem.
 If not, create an issue. Let's discuss the need and possible implementation and agree on who can implement it.
+
+### Setup
+
+```bash
+npm install -f
+cd example
+npm install -f
+npm run build
+```
