@@ -1,7 +1,11 @@
 # wix-code-typescript-wrapper
 
-**NOTE!** this tool is no longer usable as corvid-cli and corvid-types npm modules are no longer available.
-Legacy local development editor was replaced with [GitHub integration](https://support.wix.com/en/article/velo-setting-up-git-integration-wix-cli-early-access)
+## This tool is no longer usable
+
+corvid-cli and corvid-types npm modules are no longer available.
+Legacy local development editor was replaced with [GitHub integration](https://support.wix.com/en/article/velo-setting-up-git-integration-wix-cli-early-access).
+
+## About
 
 Allows writing typescript developing code with Wix Local Editor. Compiles and uploads javascript to Wix.
 Currently, there's no way to write typescript code in Local Editor.
